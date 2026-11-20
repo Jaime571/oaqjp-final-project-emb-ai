@@ -9,6 +9,9 @@ def emot_detector():
 
     response = emotion_detector(text_to_analyze)
 
+    if response['dominant_emotion'] is None:
+        return "Invalid text! Please try again!."
+
     return(
         f"For the given statement, the system response is"
         f"'anger': {response['anger']}, "
@@ -16,7 +19,7 @@ def emot_detector():
         f"'fear': {response['fear']}, "
         f"'joy': {response['joy']} and "
         f"'sadness': {response['sadness']}. "
-        f"The dominant emotion is <b>{response['dominant_emotion']}</b>."
+        f"The dominant emotion is {response['dominant_emotion']}."
     )
 
 @app.route("/")
